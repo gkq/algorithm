@@ -2,6 +2,7 @@ package org.sjtu.gkq;
 import java.util.HashMap;
 
 public class Solution {
+
     public static int[] twoSum(int[] nums, int target) {
         int[]  idxRes = new int[2];
         HashMap map = new HashMap();
@@ -16,7 +17,23 @@ public class Solution {
             }
         }
         return idxRes;
-
-
     }
+    public static int strStr(char[] strlen, char[] str){
+        int j = 0;
+        for(int i=0; i < strlen.length; ) {
+            int old = i;
+            while(i< strlen.length && j < str.length &&strlen[i] == str[j] ){
+                i++;
+                j++;
+            }
+            if(j == str.length)
+                return old;
+            else {
+                j = 0;
+                i = old + 1;
+            }
+        }
+        return -1;
+    }
+
 }
