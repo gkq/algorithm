@@ -73,5 +73,21 @@ public class Solution {
             return find_kth(A,m+ia,B,n,k-ia);
 
     }
+    public static  int candy(int[] ratings) {
+        int[] cost = new int[ratings.length];
+        for(int i=1;i<ratings.length;i++){
+            if(ratings[i]>ratings[i-1])
+                cost[i] = cost[i-1] + 1;
+        }
+        for(int j = ratings.length-2; j>=0; j--){
+            if(ratings[j]>ratings[j+1])
+                cost[j] = Math.max(cost[j], cost[j+1]+1);
+        }
+        int result = ratings.length;
+        for(int i =0;i<cost.length;i++){
+            result += cost[i];
+        }
+        return result;
+    }
 
 }
