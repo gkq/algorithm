@@ -4,6 +4,9 @@ public class ArrayTest {
     public static void main(String[] args) {
         ArrayTest test = new ArrayTest();
         test.strStrTest();
+        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int result =  Solution.maxSubArray(a);
+        System.out.println(result);
 
     }
     public void strStrTest() {

@@ -35,5 +35,14 @@ public class Solution {
         }
         return -1;
     }
+    public static int maxSubArray(int[] nums) {
+        int res = nums[0];
+        int tmp = res;
+        for(int i=1; i<nums.length; i++){
+            tmp = Math.max(tmp+nums[i], nums[i]);
+            res = Math.max(res, tmp);
+        }
+        return res;
+    }
 
 }
