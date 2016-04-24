@@ -44,5 +44,34 @@ public class Solution {
         }
         return res;
     }
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int total = nums1.length + nums2.length;
+        double result;
+        if(total%2==1)
+            result = find_kth(nums1, 0, nums2, 0, total/2+1);
+        else
+            result = (find_kth(nums1, 0, nums2, 0, total/2+1) + find_kth(nums1, 0, nums2, 0, total/2))/2;
+        return result;
+
+
+
+    }
+    private static double find_kth(int[] A,int m,int[]B,int n,int k){
+        if(A.length-m<B.length-n)
+            return find_kth(B,n,A,m,k);
+        if(n==B.length)
+            return A[m+k-1];
+        if(k==1)
+            return Math.min(A[m],B[n]);
+        int ib = Math.min(k/2, B.length-n);
+        int ia = k - ib;
+        if(A[m+ia-1]==B[n+ib-1])
+            return A[m+ia-1];
+        else if(A[m+ia-1]>B[n+ib-1])
+            return find_kth(A,m,B,n+ib,k-ib);
+        else
+            return find_kth(A,m+ia,B,n,k-ia);
+
+    }
 
 }

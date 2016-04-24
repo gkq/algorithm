@@ -2,11 +2,15 @@ package org.sjtu.gkq;
 
 public class ArrayTest {
     public static void main(String[] args) {
-        ArrayTest test = new ArrayTest();
-        test.strStrTest();
-        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-        int result =  Solution.maxSubArray(a);
-        System.out.println(result);
+//        ArrayTest test = new ArrayTest();
+//        test.strStrTest();
+//        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+//        int result =  Solution.maxSubArray(a);
+//        System.out.println(result);
+        int[] a = {1,3,4,5};
+        int[] b = {2,8,10,12};
+        double res = Solution.findMedianSortedArrays(a,b);
+        System.out.println(res);
 
     }
     public void strStrTest() {
