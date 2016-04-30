@@ -7,10 +7,19 @@ public class ArrayTest {
 //        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 //        int result =  Solution.maxSubArray(a);
 //        System.out.println(result);
-        int[] a = {1,3,4,5};
-        int[] b = {2,8,10,12};
-        double res = Solution.findMedianSortedArrays(a,b);
-        System.out.println(res);
+//        double res = Solution.findMedianSortedArrays(a,b);
+//        System.out.println(res);
+        int a[] = {-1, 2, 10, 8, 6, 9 , 10, 12,7, 3, 5, -10};
+//        heapSort hp = new heapSort(a);
+//        hp.sort();
+//        BubbleSort bb = new BubbleSort(a);
+//        int[] tmp = new int[a.length];
+//        bb.mergeSort(0, a.length, tmp);
+//        quickSort qs = new quickSort(a);
+//        qs.sort(0, a.length-1);
+//        for(int i=0; i<tmp.length; i++) {
+//            System.out.print(tmp[i]+" ");
+//        }
 
     }
     public void strStrTest() {
