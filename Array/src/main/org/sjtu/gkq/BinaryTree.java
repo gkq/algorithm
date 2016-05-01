@@ -1,7 +1,10 @@
 package org.sjtu.gkq;
 
-import java.util.ArrayList;
-import java.util.Stack;
+import javax.swing.tree.TreeNode;
+import java.util.*;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class BinaryTree {
     public TreeNode root;
@@ -136,5 +139,18 @@ public class BinaryTree {
         return res;
     }
 
+    public ArrayList levelOrder() {
+        ArrayList res = new ArrayList();
+        if(root == null) return res;
+        Queue<TreeNode> dq = new LinkedBlockingQueue<TreeNode>();
+        dq.add(root);
+        while(!dq.isEmpty()){
+            TreeNode p = dq.poll();
+            res.add(p.val);
+            if(p.left != null) dq.offer(p.left);
+            if(p.right != null) dq.offer(p.right);
+        }
+        return res;
+    }
 
 }

@@ -9,7 +9,7 @@ public class BtreeTest {
         for(int i=0; i<a.length; i++){
             bt.push(a[i]);
         }
-        ArrayList res = bt.postOrder(bt.root);
+        ArrayList res = bt.levelOrder();
         for(int i=0; i<res.size(); i++){
             System.out.print(res.get(i) + " ");
         }
