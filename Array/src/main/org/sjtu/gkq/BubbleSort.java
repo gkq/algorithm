@@ -60,24 +60,27 @@ public class BubbleSort {
         }
     }
 
-//    private void merge(int[] b, int[] tmp, int m, int n, int k) {
-//        int i = m, j =n, s=i;
-//        while(i<n && j<k) {
-//            if(b[i] < b[j]) {
-//                tmp[s++] = b[i++];
-//            }
-//            else tmp[s++] = b[j++];
-//        }
-//        while(i<n) tmp[s++] = b[i++];
-//        while(j<k) tmp[s++] = b[j++];
-//    }
-//    public void mergeSort(int i, int j, int[] tmp) {
-//        if(i==j) tmp[i] = a[i];
-//        else {
-//            int mid = i + (j-i)/2;
-//            mergeSort(i, mid, tmp);
-//            mergeSort(mid+1, j, tmp);
-//            merge(a, tmp, i, mid, j);
-//        }
-//    }
+    private void merge( int[] tmp, int m, int n, int k) {
+        int i = m, j =n+1, s=i;
+        while(i<=n && j<=k) {
+            if(a[i] < a[j]) {
+                tmp[s++] = a[i++];
+            }
+            else tmp[s++] = a[j++];
+        }
+        while(i<=n) tmp[s++] = a[i++];
+        while(j<=k) tmp[s++] = a[j++];
+        for(i=m; i<=k; i++) {
+            a[i] = tmp[i];
+        }
+    }
+    public void mergeSort(int i, int j, int[] tmp) {
+        if(i>=j) return;
+        else {
+            int mid = (i+j)/2;
+            mergeSort(i, mid, tmp);
+            mergeSort(mid+1, j, tmp);
+            merge(tmp, i, mid, j);
+        }
+    }
 }

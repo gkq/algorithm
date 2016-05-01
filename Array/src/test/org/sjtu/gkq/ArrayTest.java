@@ -12,14 +12,15 @@ public class ArrayTest {
         int a[] = {-1, 2, 10, 8, 6, 9 , 10, 12,7, 3, 5, -10};
 //        heapSort hp = new heapSort(a);
 //        hp.sort();
-//        BubbleSort bb = new BubbleSort(a);
-//        int[] tmp = new int[a.length];
-//        bb.mergeSort(0, a.length, tmp);
+        BubbleSort bb = new BubbleSort(a);
+        int[] tmp = new int[a.length];
+        bb.mergeSort(0, a.length-1, tmp);
+
 //        quickSort qs = new quickSort(a);
 //        qs.sort(0, a.length-1);
-//        for(int i=0; i<tmp.length; i++) {
-//            System.out.print(tmp[i]+" ");
-//        }
+        for(int i=0; i<a.length; i++) {
+            System.out.print(a[i]+" ");
+        }
 
     }
     public void strStrTest() {
