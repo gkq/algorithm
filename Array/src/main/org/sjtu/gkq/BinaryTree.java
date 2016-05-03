@@ -1,5 +1,6 @@
 package org.sjtu.gkq;
 
+import javax.swing.tree.TreeNode;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -252,5 +253,46 @@ public class BinaryTree {
         if(left<0 || right<0 || Math.abs(left-right)>1)
             return -1;
         return Math.max(left,right)+1;
+    }
+
+    public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> level = new ArrayList<Integer>();
+        if(root == null) return res;
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        int curCount = 1;
+        int nextCount = 0;
+        while(!queue.isEmpty()){
+            TreeNode p = queue.poll();
+            curCount--;
+            level.add(p.val);
+            if(p.left != null) {
+                queue.add(p.left);
+                nextCount++;
+            }
+            if(p.right != null) {
+                queue.add(p.right);
+                nextCount++;
+            }
+            if(curCount == 0){;
+                res.add(level);
+                level = new ArrayList<Integer>();
+                curCount = nextCount;
+                nextCount = 0;
+            }
+        }
+        return res;
+    }
+
+    public int sumNumbers(TreeNode root) {
+        return dfs(root, 0);
+    }
+    private int dfs(TreeNode node, int sum){
+        if(node == null) return 0;
+        if(node.left == null && node.right == null)
+            return sum * 10 + node.val;
+        return dfs(node.left, 10*sum+node.val) +
+                dfs(node.right, 10*sum+node.val);
     }
 }

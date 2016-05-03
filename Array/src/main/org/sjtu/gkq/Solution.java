@@ -90,4 +90,54 @@ public class Solution {
         return result;
     }
 
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int sum = 0, tmp = 0, idx = 0;
+        for(int i=0; i<gas.length; i++){
+            sum += gas[i] - cost[i];
+            tmp += gas[i] - cost[i];
+            if(tmp<0){
+                idx = i+1;
+                tmp = 0;
+            }
+        }
+        return sum>=0 ? idx : -1;
+    }
+
+    public int maxProfit(int[] prices) {
+        int sum = 0;
+        for(int i=1; i<prices.length; i++){
+            if(prices[i]>prices[i-1])
+                sum += prices[i] - prices[i-1];
+        }
+        return sum;
+    }
+
+    public boolean canJump(int[] nums) {
+        if(nums.length == 0)
+            return false;
+        int right = nums[0];
+        for(int i=1; i<=right && right<nums.length; i++){
+            right = Math.max(right,i+nums[i]);
+        }
+        return right >= nums.length - 1;
+    }
+
+    public int jump(int[] nums) {
+        if(nums.length == 1) return 0;
+        int step = 1;
+        int left = 0, right = nums[0];
+        while(right<nums.length-1){
+            int oldright = right;
+            for(int i=left; i<=oldright; i++){
+                if(i+nums[i]>right){
+                    right = i+nums[i];
+                    left = i+1;
+                }
+            }
+            step++;
+
+        }
+        return step;
+    }
+
 }

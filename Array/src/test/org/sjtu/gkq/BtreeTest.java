@@ -1,6 +1,7 @@
 package org.sjtu.gkq;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BtreeTest {
     public static void main(String[] args){
@@ -10,10 +11,10 @@ public class BtreeTest {
 //            bt.push(a[i]);
 //        }
         bt.root = bt.sortedArrayToBST(a);
-        ArrayList res = bt.levelOrder();
-        for(int i=0; i<res.size(); i++){
-            System.out.print(res.get(i) + " ");
-        }
+        List<ArrayList<Integer>> res = bt.levelOrder(bt.root);
+//        for(int i=0; i<res.size(); i++){
+//            System.out.print(res.get(i) + " ");
+//        }
 
     }
 }
