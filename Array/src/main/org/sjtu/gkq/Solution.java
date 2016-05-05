@@ -1,5 +1,7 @@
 package org.sjtu.gkq;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Solution {
 
@@ -140,4 +142,111 @@ public class Solution {
         return step;
     }
 
+    public int trap(int[] height) {
+        int res = 0;
+        int n = height.length;
+        if(n==0) return res;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        left[0] = 0; right[n-1] = 0;
+        for(int i=1; i<n; i++){
+            left[i] = Math.max(height[i-1],left[i-1]);
+            right[n-i-1] = Math.max(height[n-i],right[n-i]);
+        }
+        for(int i=1; i<n-1; i++){
+            int tmp = Math.min(left[i],right[i]) - height[i];
+            if(tmp>0)
+                res += tmp;
+        }
+        return res;
+    }
+
+    public int maxProduct(int[] nums) {
+        int res =nums[0]; int neg = nums[0]; int pos = nums[0];
+        for(int i=1; i<nums.length; i++){
+            int tmp = Math.max(Math.max(neg*nums[i], pos*nums[i]), nums[i]);
+            res = Math.max(tmp, res);
+            int ptmp = Math.max(Math.max(pos*nums[i], neg*nums[i]), nums[i]);
+            neg = Math.min(Math.min(neg*nums[i], pos*nums[i]), nums[i]);
+            pos = ptmp;
+        }
+        return res;
+    }
+
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        if(n==0) return null;
+        int[] res = new int[n];
+        int[] left = new int[n];
+        int[] right = new int[n];
+        left[0] = 1; right[n-1] = 1;
+        for(int i=1; i< n; i++){
+            left[i] = left[i-1]*nums[i-1];
+            right[n-i-1] = right[n-i]*nums[n-i];
+        }
+        for(int i=0; i<n; i++){
+            res[i] = left[i] * right[i];
+        }
+        return res;
+    }
+
+    public int majorityElement(int[] nums) {
+        int res = 0, count = 0;
+        for(int i=0; i<nums.length; i++){
+            if(count==0){
+                res = nums[i];
+                count = 1;
+                continue;
+            }
+            if(nums[i]==res)
+                count++;
+            else count--;
+        }
+        return res;
+    }
+
+    public static int missingNumber(int[] nums) {
+        int n = nums.length;
+        if(n==0) return -1;
+        for(int i=0; i<n; i++){
+            while(nums[i]!=i && nums[i]<n){
+                int tmp = nums[i];
+                nums[i] = nums[tmp];
+                nums[tmp] = tmp;
+            }
+        }
+        for(int i=0; i<n; i++){
+            if(nums[i]!=i)
+                return i;
+        }
+        return n;
+    }
+
+//    public List<Integer> majorityElement(int[] nums) {
+//        List<Integer> res = new ArrayList<Integer>();
+//        if(nums.length==0) return res;
+//        int major1 = 0, major2 = 0;
+//        int count1 = 0, count2 = 0;
+//        for(int i=0; i<nums.length; i++){
+//            if(count1 == 0){
+//                major1 = nums[i];
+//                count1 = 1;
+//                continue;
+//            }
+//            else if(count2 == 0){
+//                major2 = nums[i];
+//                count2 = 1;
+//            }
+//            else {
+//                if(nums[i]==major1)
+//                        count1++;
+//                else if(nums[i] == major2)
+//                        count2++;
+//                else{
+//                    count1--;
+//                    count2--;
+//                }
+//            }
+//        }
+//    }
 }
