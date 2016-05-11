@@ -2,26 +2,11 @@ package org.sjtu.gkq;
 
 public class ArrayTest {
     public static void main(String[] args) {
-//        ArrayTest test = new ArrayTest();
-//        test.strStrTest();
-//        int[] a = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-//        int result =  Solution.maxSubArray(a);
-//        System.out.println(result);
-//        double res = Solution.findMedianSortedArrays(a,b);
-//        System.out.println(res);
-        int a[] = {-1, 2, 10, 8, 6, 9 , 10, 12,7, 3, 5, -10};
-//        heapSort hp = new heapSort(a);
-//        hp.sort();
-        BubbleSort bb = new BubbleSort(a);
-        int[] tmp = new int[a.length];
-        bb.mergeSort(0, a.length-1, tmp);
-
-//        quickSort qs = new quickSort(a);
-//        qs.sort(0, a.length-1);
-        for(int i=0; i<a.length; i++) {
-            System.out.print(a[i]+" ");
+        int a[] = {1,0};
+        Solution.missingNumber(a);
+        for(int i=0; i<a.length; i++){
+            System.out.println(a[i]);
         }
-
     }
     public void strStrTest() {
         char[] strlong = new String("abcdef").toCharArray();
