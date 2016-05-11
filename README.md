@@ -1,2 +1,2 @@
-# algorithm
-data structure and algorithm
+##algorithm##
+数据结构和算法是程序员的基本功，所以有必要坚持每天码代码，保持程序员的思维
